@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Bağlı listemizin düğüm yapısı
+struct Node {
+    int veri;
+    struct Node* sonraki;
+};
+
+// Bağlı listemizin eleman sayısını bulan fonksiyon
+int elemanSayisiBul(struct Node* baslangic) {
+    int sayac = 0;
+    struct Node* temp = baslangic;
+
+    while (temp != NULL) {
+        sayac++;
+        temp = temp->sonraki;
+    }
+
+    return sayac;
+}
+
+int main() {
+    // Örnek olarak bir bağlı liste oluşturuyoruz
+    struct Node* dugum1 = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* dugum2 = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* dugum3 = (struct Node*)malloc(sizeof(struct Node));
+
+    dugum1->veri = 10;
+    dugum1->sonraki = dugum2;
+    dugum2->veri = 20;
+    dugum2->sonraki = dugum3;
+    dugum3->veri = 30;
+    dugum3->sonraki = NULL;
+
+    // Bağlı listedeki eleman sayısını buluyoruz
+    int elemanSayisi = elemanSayisiBul(dugum1);
+    printf("Eleman sayisi: %d\n", elemanSayisi);
+
+    // Bellekte ayrılan yerleri serbest bırakıyoruz
+    free(dugum1);
+    free(dugum2);
+    free(dugum3);
+
+    return 0;
+}
