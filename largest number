@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    int dizi[] = {12, 45, 67, 89, 34, 56};
+    int diziBoyutu = sizeof(dizi) / sizeof(dizi[0]);
+    int enBuyukSayi = dizi[0];
+
+    for (int i = 1; i < diziBoyutu; i++) {
+        if (dizi[i] > enBuyukSayi) {
+            enBuyukSayi = dizi[i];
+        }
+    }
+
+    printf("En buyuk sayi: %d\n", enBuyukSayi);
+
+    return 0;
+}
